@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Login • Quiz App{% endblock %}
+{% block content %}
+  <section class="card">
+    <h1 class="title">Welcome</h1>
+    <p class="subtitle">Enter your name to begin the quiz.</p>
+    <form method="post" class="form">
+      <label for="username" class="label">Your Name</label>
+      <input id="username" name="username" class="input" placeholder="e.g., Meera" autofocus required />
+      <button type="submit" class="btn btn-primary">Start Quiz</button>
+    </form>
+  </section>
+{% endblock %}

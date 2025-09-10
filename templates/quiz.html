@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Question {{ qnum }} • Quiz App{% endblock %}
+{% block content %}
+  <section class="card">
+    <div class="progress">
+      <div class="progress-label">Question {{ qnum }} of {{ total }}</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ (qnum / total) * 100 }}%"></div>
+      </div>
+    </div>
+
+    <h1 class="question">{{ question }}</h1>
+
+    <form method="post" action="{{ url_for('answer') }}" class="options-grid">
+      {% for key, text in options.items() %}
+        <button type="submit" class="option-tile" name="choice" value="{{ key }}">
+          <span class="option-key">{{ key }}</span>
+          <span class="option-text">{{ text }}</span>
+        </button>
+      {% endfor %}
+    </form>
+  </section>
+{% endblock %}

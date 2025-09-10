@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Results • Quiz App{% endblock %}
+{% block content %}
+  <section class="card">
+    <h1 class="title">Your Results</h1>
+    <p class="scoreline">
+      Score: <strong>{{ score }}</strong> / {{ total }}
+    </p>
+
+    <div class="review">
+      {% for a in answers %}
+        <div class="review-item {% if a.is_correct %}correct{% else %}incorrect{% endif %}">
+          <div class="review-q">{{ loop.index }}. {{ a.question }}</div>
+          <div class="review-a">
+            Your answer: <strong>{{ a.selected }}</strong> •
+            Correct: <strong>{{ a.correct }}</strong>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="actions">
+      <a href="{{ url_for('start') }}" class="btn">Try Again</a>
+      <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+    </div>
+  </section>
+{% endblock %}
